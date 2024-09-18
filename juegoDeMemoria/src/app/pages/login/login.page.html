@@ -1,0 +1,80 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title>
+      JUEGO DE LA MEMORIA
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+
+
+  <ion-card class="login-card">
+    <ion-card-header>
+      <div class="icon-container">
+        <img src="../../../assets/icon/icon.png" alt="App Icon" class="app-icon">
+      </div>
+      <ion-card-title class="title-card">Iniciar Sesion</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input
+        class="styleInput"
+        type="email"
+        required="true"
+        fill="solid"
+        label="Email"
+        labelPlacement="floating"
+        errorText="Email es requerido"
+        [(ngModel)]="email">
+      </ion-input>
+      
+      <ion-input
+        class="styleInput"
+        type="password"
+        required="true"
+        fill="solid"
+        label="Contraseña"
+        labelPlacement="floating"
+        errorText="Contraseña es requerida"
+        [(ngModel)]="password"
+        style="margin-top: 20px;"
+        (input)="handleVisibilityIcon($event)">
+        @if (showVisibilityIcon) {
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        }
+      </ion-input>
+
+      <div class="content-button">
+        <ion-button
+          color="secondary"
+          fill="outline"
+          (click)="login()"
+          [disabled]="email == '' || password == ''">Ingresar</ion-button>
+      </div>
+
+      <ion-fab >
+        <ion-fab-button>
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="end">
+          <ion-fab-button (click)="completeUser('juan@gmail.com','aaa123')">
+            <img src="../../../assets/users/user1.png" alt="user1" class="image-user">
+          </ion-fab-button>
+          <ion-fab-button (click)="completeUser('aa@gmail.com','aa1234')">
+            <img src="../../../assets/users/user2.png" alt="user2" class="image-user">
+          </ion-fab-button>
+          <ion-fab-button (click)="completeUser('pedro12@gmail.com','pedro123')">
+            <img src="../../../assets/users/user3.png" alt="user2" class="image-user">
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+</ion-content>

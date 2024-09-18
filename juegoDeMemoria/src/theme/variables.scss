@@ -1,0 +1,28 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+ion-app{
+    --ion-background-color: rgb(231, 226, 226);
+}
+
+
+ion-toolbar {
+  --background: #00bcd4; 
+    --color: white; 
+  }
+  
+  ion-title {
+    color: white;
+    font-weight: 900;
+    text-align: center;
+  }
+
+
+  .swal2-popup.swal2-toast .swal2-title{
+    font-weight: normal  ;
+
+  }
+
+  html, body {
+    overflow: hidden !important; 
+    height: 100% !important; 
+  }

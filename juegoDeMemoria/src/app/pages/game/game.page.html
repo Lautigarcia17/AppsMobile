@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{mode | uppercase}}
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-icon class="icon" name="arrow-back-circle-outline" (click)="goBack()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container-grid">
+    <ion-grid>
+      @for (row of arrayCards; track $index) {
+      <ion-row [ngClass]="{ 'rows-easy': mode === 'facil','rows-medium': mode === 'medio','rows-hard': mode === 'dificil'}">
+        @for (card of row; track $index) {
+        <ion-col>
+          <img (click)="turnCard(card)" class="card"
+            [ngClass]="{'card-animal': card.imageDiscovered, 'disabled': card.imageDiscovered}"
+            [src]="!card.imageDiscovered ? card.backCard : card.image" alt="imageAnimal" />
+        </ion-col>
+        }
+      </ion-row>
+      }
+    </ion-grid>
+  </div>
+</ion-content>

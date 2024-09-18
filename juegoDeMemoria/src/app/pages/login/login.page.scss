@@ -1,0 +1,105 @@
+
+  
+  .login-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .app-icon {
+    width: 185px;
+    height: 185px;
+  }
+  
+  .login-card {
+    background-color: transparent;
+    margin: 12px;
+    padding: 0px 30px;
+    position: relative;
+    margin-top: 20px;
+  }
+  
+  .title-card {
+    text-align: center;
+    color: #009ee9;
+    font-weight: 900;
+    font-size: 25px;
+    margin-top: 0px;
+  }
+  
+  .content-button {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 55px;
+
+  }
+  
+  ion-button {
+    --background: #00bcd4;
+    --color: white;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  
+  ion-item {
+    --background: transparent;
+    --border-color: #00acc1; 
+  }
+  
+  .styleInput {
+    --color: #000000;
+    margin-bottom: 10px;
+    --background: transparent;
+    height: 70px !important;
+  
+    /* Fondo transparente cuando el input está enfocado */
+    &:focus-within {
+      --background: transparent;
+    }
+  
+    /* Evitar que el color cambie en dispositivos Android al seleccionar */
+    .native-input {
+      background-color: transparent !important; /* Asegura fondo transparente */
+    }
+  }
+  
+  ion-fab-button {
+    --background: #81e1e6;
+    --color: black;
+   
+ 
+  }
+  
+  ion-fab{
+    position: absolute;
+    left: -20px;
+    bottom: 11px;
+  }
+
+  .image-user {
+    width: 100%;
+    height: 100%;
+  }
+  
+  
+  ion-card {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+  ion-card-header{
+    padding: 0px;
+    padding-bottom: 5px;
+  }
+  

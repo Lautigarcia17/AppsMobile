@@ -1,0 +1,52 @@
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.container-grid {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ion-grid {
+    height: 100%;
+}
+
+
+.rows-easy {
+    height: 33.3%; 
+  }
+  
+  .rows-medium {
+    height: 20%; 
+  }
+  
+  .rows-hard {
+    height: 25%; 
+  }
+
+ion-col {
+    height: 100%;
+    padding: 5px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    aspect-ratio: 1 / 1; 
+}
+
+.card-animal {
+    border: 3px solid rgb(0, 0, 0);
+}
+
+.disabled {
+    pointer-events: none; 
+   
+  }

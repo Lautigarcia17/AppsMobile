@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">
+      JUEGO DE LA MEMORIA
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-icon name="enter-outline" (click)="logOut()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  @if(isLoading){
+    <ion-progress-bar type="indeterminate" color="primary"></ion-progress-bar>
+  }
+
+  <div class="content">
+    
+    @if(!isLoading){
+      <div class="carousel-container">
+        <button class="arrow prev" (click)="prevSlide()">←</button>
+  
+        <div class="carousel">
+          @for (category of categories; track $index) {
+            <div class="carousel-slide" [ngClass]="{ 'active': currentIndex === $index, 'bg-index-0': currentIndex === 0, 'bg-index-1': currentIndex === 1, 'bg-index-2': currentIndex === 2}">
+              <ion-grid style="width: 100%;">
+                <ion-row>
+                  <ion-col class="table-title {{ category.class }}">{{ category.title }}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="table-subtitle {{ category.class }}" size="3">Top</ion-col>
+                  <ion-col class="table-subtitle {{ category.class }}" size="5">Nombre</ion-col>
+                  <ion-col class="table-subtitle {{ category.class }}" size="4">Tiempo</ion-col>
+                </ion-row>
+                <ion-row *ngFor="let item of category.items; let i = index">
+                  <ion-col class="table-row {{ category.class }}" size="3">{{ i + 1 }}</ion-col>
+                  <ion-col class="table-row {{ category.class }}" size="6">{{ item.name }}</ion-col>
+                  <ion-col class="table-row {{ category.class }}" size="3">{{ item.time }}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          }
+            
+
+        </div>
+  
+        <button class="arrow next" (click)="nextSlide()">→</button>
+      </div>
+    } 
+
+    
+
+
+    <div class="difficulty-selection">
+      <p>Seleccionar una dificultad</p>
+      <ion-button class="button-easy" (click)="handleRoute('facil')">Facil</ion-button>
+      <ion-button class="button-medium" (click)="handleRoute('medio')">Medio</ion-button>
+      <ion-button class="button-hard" (click)="handleRoute('dificil')">Dificil</ion-button>
+    </div>
+
+
+  </div>
+</ion-content>
