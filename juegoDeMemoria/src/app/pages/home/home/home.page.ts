@@ -25,7 +25,7 @@ export class HomePage implements OnInit, OnDestroy {
   currentIndex = 0;
   categories: Category[] = [
     {
-      title: 'FACIL',
+      title: 'FÁCIL',
       class: 'easy',
       items: []
     },
@@ -35,7 +35,7 @@ export class HomePage implements OnInit, OnDestroy {
       items: []
     },
     {
-      title: 'DIFICIL',
+      title: 'DIFÍCIL',
       class: 'hard',
       items: []
     },
@@ -100,8 +100,8 @@ export class HomePage implements OnInit, OnDestroy {
 
   logOut() {
     Swal.fire({
-      title: "Estas seguro?",
-      text: "Volveras al  inicio y tendras que volver a iniciar sesion",
+      title: "Estás  seguro?",
+      text: "Volveras al  inicio y tendras que volver a iniciar sesión",
       icon: "warning",
       showCancelButton: true,
       allowOutsideClick: false,
@@ -114,7 +114,7 @@ export class HomePage implements OnInit, OnDestroy {
       if (result.isConfirmed) {
         this.auth.logout()
           .then(() => {
-            this.toast.CreateTost("Has cerrado la sesion", 'success', 'green')
+            this.toast.CreateTost("Has cerrado la sesión", 'success', 'green')
             this.router.navigate(['login']);
           })
       }

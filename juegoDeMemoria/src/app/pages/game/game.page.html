@@ -14,7 +14,7 @@
   <div class="container-grid">
     <ion-grid>
       @for (row of arrayCards; track $index) {
-      <ion-row [ngClass]="{ 'rows-easy': mode === 'facil','rows-medium': mode === 'medio','rows-hard': mode === 'dificil'}">
+      <ion-row [ngClass]="{ 'rows-easy': mode === 'fácil','rows-medium': mode === 'medio','rows-hard': mode === 'difícil'}">
         @for (card of row; track $index) {
         <ion-col>
           <img (click)="turnCard(card)" class="card"

@@ -53,8 +53,8 @@ export class GamePage implements OnInit {
   loadCards(mode : string){
     let cards : Card[] = []
     let numColumns : number = 0;
-
-    if(mode == 'facil'){
+    
+    if(mode == 'fácil'){
       numColumns = 2;
       cards = cardsEasy;
     }
@@ -106,7 +106,7 @@ export class GamePage implements OnInit {
           this.database.saveScore(this.auth.nameUser,new Date(),this.timer, this.mode)
           Swal.fire({
             title: "Felicidades as ganado!!",
-            text: `Lo has logrado en ${this.convertSecondsToTime(this.timer)}. Quieres jugar denuevo?`,
+            text: `Lo has logrado en ${this.convertSecondsToTime(this.timer)}. Quieres jugar de nuevo?`,
             icon: "success",
             showCancelButton: true,
             allowOutsideClick:false,
