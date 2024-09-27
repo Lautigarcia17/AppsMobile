@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SALAS DE CHAT</ion-title>
+    <ion-button class="btn-modal" id="open-modal" expand="block"><ion-icon name="people-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login-content">
+
+
+
+    <!-- Inputs -->
+    <form [formGroup]="formUser" (ngSubmit)="login()">
+      <div class="content-input">
+        <ion-item class="custom-input">
+          <ion-icon class="input-icon" name="mail-outline"></ion-icon>
+          <ion-input style="--background: transparent; --border-color: transparent;" label="Email"
+            label-placement="floating" fill="solid" placeholder="Ingresar ..." formControlName="email">
+          </ion-input>
+        </ion-item>
+        @if (formUser.get('email')?.hasError('required')) {
+        <div class="validation-message" [hidden]="formUser.get('email')?.pristine">Email es requerido</div>
+        }
+        @else if (formUser.get('email')?.hasError('email')) {
+        <div class="validation-message" [hidden]="formUser.get('email')?.pristine">Formato invalido del email</div>
+        }
+
+
+
+        <ion-item class="custom-input">
+          <ion-icon class="input-icon" name="lock-closed-outline"></ion-icon>
+          <ion-input style="--background: transparent; --border-color: transparent;" type="password" label="Contraseña"
+            label-placement="floating" fill="solid" placeholder="Ingresar ..." formControlName="password"
+            (input)="handleVisibilityIcon($event)">
+            @if (showVisibilityIcon) {
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+            }
+          </ion-input>
+        </ion-item>
+        @if (formUser.get('password')?.hasError('required')) {
+        <div class="validation-message" [hidden]="formUser.get('password')?.pristine">La contraseña es requerida</div>
+        }
+      </div>
+
+
+      <h1 class="title">INICIAR SESIÓN</h1>
+
+      <div class="app-icon">
+        <img src="../../../assets/icon/icon.png" alt="App Icon">
+      </div>
+
+
+
+
+      <ion-button type="submit" class="login-button" [disabled]="formUser.invalid">
+        Ingresar
+      </ion-button>
+    </form>
+
+
+  </div>
+
+
+  <ion-modal #modal trigger="open-modal">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title>Usuarios</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="white" (click)="modal.dismiss()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-list>
+          <ion-radio-group value="strawberries">
+
+            <ion-item class="user-item" (click)="completeUser('admin@admin.com','111111')">
+              <ion-avatar slot="start">
+                <ion-img src="../../../assets/users/user1.png"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Admin</h2>
+              </ion-label>
+              <ion-radio></ion-radio>
+            </ion-item>
+            <ion-item class="user-item" (click)="completeUser('invitado@invitado.com','222222')">
+              <ion-avatar slot="start">
+                <ion-img src="../../../assets/users/user2.png"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Invitado</h2>
+              </ion-label>
+              <ion-radio></ion-radio>
+            </ion-item>
+            <ion-item class="user-item" (click)="completeUser('usuario@usuario.com','333333')">
+              <ion-avatar slot="start">
+                <ion-img src="../../../assets/users/user3.png"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Usuario</h2>
+              </ion-label>
+              <ion-radio></ion-radio>
+            </ion-item>
+            <ion-item class="user-item" (click)="completeUser('anonimo@anonimo.com','444444')">
+              <ion-avatar slot="start">
+                <ion-img src="../../../assets/users/user4.png"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Anonimo</h2>
+              </ion-label>
+              <ion-radio></ion-radio>
+            </ion-item>
+            <ion-item class="user-item" (click)="completeUser('tester@tester.com','555555')">
+              <ion-avatar slot="start">
+                <ion-img src="../../../assets/users/user5.png"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Tester</h2>
+              </ion-label>
+              <ion-radio></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+
+    
+  </ion-modal>
+  
+  <app-spinner [isLoading]="isLoading"></app-spinner>
+
+
+
+
+
+</ion-content>

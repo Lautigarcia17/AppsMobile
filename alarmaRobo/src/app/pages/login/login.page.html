@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>INICIAR SESIÓN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login-content">
+    <div class="app-icon">
+      <img src="../../../assets/icon/icon.png" alt="App Icon" >
+
+    </div>
+
+    <!-- Inputs -->
+    <form [formGroup]="formUser" (ngSubmit)="login()">
+      <ion-item>
+        <ion-input  
+          style="--background: transparent; --border-color: transparent;" 
+          label="Email" 
+          label-placement="floating" 
+          fill="solid" 
+          placeholder="Ingresar ..." 
+          formControlName="email">
+        </ion-input>
+      </ion-item>
+      @if (formUser.get('email')?.hasError('required')) {
+        <div class="validation-message" [hidden]="formUser.get('email')?.pristine">Email es requerido</div>
+      }
+      @else if (formUser.get('email')?.hasError('email')) {
+        <div class="validation-message" [hidden]="formUser.get('email')?.pristine">Formato invalido del email</div>
+      }
+
+      <ion-item>
+        <ion-input  
+          style="--background: transparent; --border-color: transparent;" 
+          type="password"
+          label="Contraseña" 
+          label-placement="floating" 
+          fill="solid" 
+          placeholder="Ingresar ..." 
+          formControlName="password"
+          (input)="handleVisibilityIcon($event)">
+          @if (showVisibilityIcon) {
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          }
+        </ion-input>
+      </ion-item>
+      @if (formUser.get('password')?.hasError('required')) {
+        <div class="validation-message" [hidden]="formUser.get('password')?.pristine">La contraseña es requerida</div>
+      }
+
+
+      <ion-button type="submit" expand="block" class="login-button" [disabled]="formUser.invalid">Ingresar</ion-button>
+    </form>
+
+
+    <div class="quick-login-buttons">
+      <ion-button expand="block" (click)="completeUser('admin@admin.com','111111')" class="quick-login-btn">
+        <img src="../../../assets/users/user1.png" alt="Admin">
+      </ion-button>
+      <ion-button expand="block" (click)="completeUser('invitado@invitado.com','222222')" class="quick-login-btn">
+        <img src="../../../assets/users/user2.png" alt="Invitado">
+      </ion-button>
+      <ion-button expand="block" (click)="completeUser('usuario@usuario.com','333333')" class="quick-login-btn">
+        <img src="../../../assets/users/user3.png" alt="Usuario">
+      </ion-button>
+      <ion-button expand="block" (click)="completeUser('anonimo@anonimo.com','444444')" class="quick-login-btn">
+        <img src="../../../assets/users/user4.png" alt="Anónimo">
+      </ion-button>
+    </div>
+  </div>
+
+  <app-spinner [isLoading]="isLoading"></app-spinner>
+</ion-content>

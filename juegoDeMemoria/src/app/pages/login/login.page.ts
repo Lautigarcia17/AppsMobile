@@ -10,23 +10,27 @@ import { add} from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { UserCredential } from '@angular/fire/auth';
 import { DatabaseService } from 'src/app/core/services/database.service';
+import { SpinnerComponent } from 'src/app/components/spinner/spinner.component';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'login.page.html',
   styleUrls: ['login.page.scss'],
   standalone: true,
-  imports: [IonLabel, IonItem, IonFabList, IonIcon, IonFabButton, IonFab, IonInputPasswordToggle,IonCardContent, IonToast, IonCardTitle, IonCardHeader, IonCard, IonButton, IonInput, IonHeader, IonToolbar, IonTitle, IonContent, FormsModule,CommonModule],
+  imports: [SpinnerComponent, IonLabel, IonItem, IonFabList, IonIcon, IonFabButton, IonFab, IonInputPasswordToggle,IonCardContent, IonToast, IonCardTitle, IonCardHeader, IonCard, IonButton, IonInput, IonHeader, IonToolbar, IonTitle, IonContent, FormsModule,CommonModule],
 })
 export class Login {
   email!: string;
   password!: string;
-  showVisibilityIcon = false;
+  showVisibilityIcon : boolean
+  isLoading : boolean;
 
 
   constructor(private auth: AuthService, private router: Router, private toast : ToastService, private database : DatabaseService) {
     this.emptyInputs();
     addIcons({add});
+    this.showVisibilityIcon = false;
+    this.isLoading = false;
   }
 
 
@@ -36,23 +40,23 @@ export class Login {
   }
 
   login() {
+    this.isLoading = true;
     if (this.email && this.password) {
       this.auth.login(this.email, this.password)
       .then( (response:UserCredential) =>{
 
         this.database.findUsernameDatabase(response.user.email ?? '')
         .then((username : string)=>{
+          this.isLoading = false;
           this.auth.nameUser = username;
           this.toast.CreateTost('Has iniciado sesion','success','green');
           this.router.navigate(['/home']);
         })
-
-
-
       })
       .catch( (error) =>{
           this.toast.ShowError(error.code);
           console.error(error);
+          this.isLoading = false;
       } )
     }
   }

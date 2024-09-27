@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SALAS DE CHAT</ion-title>    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab slot="fixed" vertical="top" horizontal="end" >
+    <ion-fab-button color="dark" size="small">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button (click)="completeUser('anonimo@anonimo.com','444444')">
+        <img src="../../../assets/users/user4.png" alt="user1" class="image-user">
+      </ion-fab-button>
+      <ion-fab-button (click)="completeUser('invitado@invitado.com','222222')">
+        <img src="../../../assets/users/user2.png" alt="user2" class="image-user">
+      </ion-fab-button>
+      <ion-fab-button (click)="completeUser('admin@admin.com','111111')">
+        <img src="../../../assets/users/user1.png" alt="user2" class="image-user">
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+  <div class="login-content">
+
+    <h1 class="title">INICIAR SESIÓN</h1>
+
+    <!-- Inputs -->
+    <form [formGroup]="formUser" (ngSubmit)="login()">
+      <ion-item class="custom-input">
+        <ion-icon class="input-icon" name="mail-outline"></ion-icon>
+        <ion-input  
+          style="--background: transparent; --border-color: transparent;" 
+          label="Email" 
+          label-placement="floating" 
+          fill="solid" 
+          placeholder="Ingresar ..." 
+          formControlName="email">
+        </ion-input>
+      </ion-item>
+      @if (formUser.get('email')?.hasError('required')) {
+        <div class="validation-message" [hidden]="formUser.get('email')?.pristine">Email es requerido</div>
+      }
+      @else if (formUser.get('email')?.hasError('email')) {
+        <div class="validation-message" [hidden]="formUser.get('email')?.pristine">Formato invalido del email</div>
+      }
+
+
+    
+      <ion-item class="custom-input">
+        <ion-icon class="input-icon" name="lock-closed-outline"></ion-icon>
+        <ion-input  
+          style="--background: transparent; --border-color: transparent;" 
+          type="password"
+          label="Contraseña" 
+          label-placement="floating" 
+          fill="solid" 
+          placeholder="Ingresar ..." 
+          formControlName="password"
+          (input)="handleVisibilityIcon($event)">
+          @if (showVisibilityIcon) {
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          }
+        </ion-input>
+      </ion-item>
+      @if (formUser.get('password')?.hasError('required')) {
+        <div class="validation-message" [hidden]="formUser.get('password')?.pristine">La contraseña es requerida</div>
+      }
+
+
+    
+      <ion-button type="submit" class="login-button" [disabled]="formUser.invalid">
+        Ingresar
+      </ion-button>
+    </form>
+
+    <div class="app-icon">
+        <img src="../../../assets/icon/icon.png" alt="App Icon" >
+    </div>
+  </div>
+  <app-spinner [isLoading]="isLoading"></app-spinner>
+</ion-content>

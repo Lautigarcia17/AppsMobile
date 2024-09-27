@@ -12,11 +12,12 @@
   .icon-container {
     display: flex;
     justify-content: center;
+    margin: 10px;
   }
   
   .app-icon {
-    width: 185px;
-    height: 185px;
+    width: 160px;
+    height: 160px;
   }
   
   .login-card {
@@ -59,15 +60,14 @@
     margin-bottom: 10px;
     --background: transparent;
     height: 70px !important;
-  
-    /* Fondo transparente cuando el input está enfocado */
+
     &:focus-within {
       --background: transparent;
     }
   
-    /* Evitar que el color cambie en dispositivos Android al seleccionar */
+
     .native-input {
-      background-color: transparent !important; /* Asegura fondo transparente */
+      background-color: transparent !important;
     }
   }
   

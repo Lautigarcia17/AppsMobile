@@ -8,6 +8,8 @@
 .image
 {
     max-height: 500px;
+    border: 4px solid #000000;
+    border-radius: 100%;
 }
 .icon
 {
@@ -18,8 +20,11 @@
 }
 .element
 {
-    width: 100%;
-    background-color: #00bcd4;
+        border-radius: 5px;
+        width: 100%;
+        background-color: #00bcd4;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.7);
+    
 }
 
 h1 {
@@ -33,8 +38,8 @@ h1 {
 
 
 .swing-out-top-bck {
-	-webkit-animation: swing-out-top-bck 5s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
-	        animation: swing-out-top-bck 5s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+	-webkit-animation: swing-out-top-bck 3s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+	        animation: swing-out-top-bck 3s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
 }
 
 @keyframes swing-out-top-bck {
@@ -61,8 +66,8 @@ h1 {
       }
   }
   .swing-out-bottom-bck {
-	-webkit-animation: swing-out-bottom-bck 5s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
-	        animation: swing-out-bottom-bck 5s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+	-webkit-animation: swing-out-bottom-bck 3s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+	        animation: swing-out-bottom-bck 3s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
 }
   @keyframes swing-out-bottom-bck {
     65% {
@@ -89,15 +94,14 @@ h1 {
   }
 
   .flip-out-hor-top {
-	-webkit-animation: flip-out-hor-top 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: flip-out-hor-top 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	-webkit-animation: flip-out-hor-top 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: flip-out-hor-top 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 @keyframes flip-out-hor-top {
     80% {
       -webkit-transform: rotateX(0);
               transform: rotateX(0);
-      opacity: 1;
     }
     100% {
       -webkit-transform: rotateX(70deg);

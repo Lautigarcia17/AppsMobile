@@ -1,0 +1,7 @@
+{
+  "name": "salaDeChat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
