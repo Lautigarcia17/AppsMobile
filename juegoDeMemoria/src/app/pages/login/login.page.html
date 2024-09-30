@@ -16,7 +16,7 @@
       <div class="icon-container">
         <img src="../../../assets/icon/icon.png" alt="App Icon" class="app-icon">
       </div>
-      <ion-card-title class="title-card">Iniciar sesión</ion-card-title>
+
     </ion-card-header>
     <ion-card-content>
       <ion-input
@@ -24,9 +24,9 @@
         type="email"
         required="true"
         fill="solid"
-        label="Email"
+        label="Correo electrónico"
         labelPlacement="floating"
-        errorText="Email es requerido"
+        errorText="El correo electrónico es requerido"
         [(ngModel)]="email">
       </ion-input>
       
@@ -48,7 +48,7 @@
 
       <div class="content-button">
         <ion-button
-          color="secondary"
+          color="light"
           fill="outline"
           (click)="login()"
           [disabled]="email == '' || password == ''">Ingresar</ion-button>

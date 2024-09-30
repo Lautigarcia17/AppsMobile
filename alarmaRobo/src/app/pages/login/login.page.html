@@ -16,7 +16,7 @@
       <ion-item>
         <ion-input  
           style="--background: transparent; --border-color: transparent;" 
-          label="Email" 
+          label="Correo electrónico" 
           label-placement="floating" 
           fill="solid" 
           placeholder="Ingresar ..." 
@@ -24,7 +24,7 @@
         </ion-input>
       </ion-item>
       @if (formUser.get('email')?.hasError('required')) {
-        <div class="validation-message" [hidden]="formUser.get('email')?.pristine">Email es requerido</div>
+        <div class="validation-message" [hidden]="formUser.get('email')?.pristine">El correo electrónico es requerido</div>
       }
       @else if (formUser.get('email')?.hasError('email')) {
         <div class="validation-message" [hidden]="formUser.get('email')?.pristine">Formato invalido del email</div>

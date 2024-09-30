@@ -1,0 +1,22 @@
+.btn-logout
+{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 50px;
+  --background: transparent;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+ion-toolbar{
+    --background: rgb(233 233 255 / 85%) !important;
+    color: #000000;
+}
+
+ion-title{
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    font-weight: 900;
+    text-align: center;
+}

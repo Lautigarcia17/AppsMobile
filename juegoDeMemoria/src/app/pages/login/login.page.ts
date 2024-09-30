@@ -51,6 +51,7 @@ export class Login {
           this.auth.nameUser = username;
           this.toast.CreateTost('Has iniciado sesion','success','green');
           this.router.navigate(['/home']);
+          this.emptyInputs();
         })
       })
       .catch( (error) =>{

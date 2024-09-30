@@ -48,6 +48,7 @@
     --color: white;
     font-weight: 700;
     font-size: 17px;
+    --border-radius: 20px !important;
   }
   
   ion-item {
@@ -72,7 +73,7 @@
   }
   
   ion-fab-button {
-    --background: #81e1e6;
+    --background: #ffffff;
     --color: black;
    
  
