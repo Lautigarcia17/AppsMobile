@@ -1,10 +1,114 @@
+<ion-content id="main-content" [fullscreen]="true">
+
+  @if (!viewList) {
+    <div class="elements">
+      <ion-button class="element" (click)="switchView('linda')">
+        <img src="../../../../assets/image-home/cosas-lindas.png" alt="cosas lindas">
+        <h2 class="overlay-text">Cosas lindas</h2>
+      </ion-button>
+      <ion-button class="element" (click)="switchView('fea')">
+        <img src="../../../../assets/image-home/cosas-feas.png" alt="cosas feas">
+        <h2 class="overlay-text">Cosas feas</h2>
+      </ion-button>  
+    </div>
+  }
+  @else {
+      <ion-button class="btn-back" (click)="handleViewList()"><ion-icon name="arrow-undo-outline"></ion-icon></ion-button>
+
+      <div class="content-camera">
+        <ion-button class="btn-photo" (click)="saveImage()"><ion-icon name="camera-outline" class="icon-camera"></ion-icon></ion-button>
+      </div>
+  
+      @for (item of this.photos; track $index) {
+        @if (item.type == currentType && item.user != this.auth.nameUser) {
+          <div class="elements-list">
+            <div class="element-list">
+              <h2 class="text-top">{{item.user}}</h2>
+              <img src={{item.image}} alt="image user" class="image-user" >
+              <div class="section-bottom"> 
+                <h2>{{item.day}}</h2>
+                @if (!this.verifyLike(item)) {
+                  <ion-icon name="heart-outline" class="icon-like" (click)="updateLike(item.id, true)"></ion-icon>
+                }@else{
+                  <ion-icon name="heart" class="icon-like" (click)="updateLike(item.id, false)"></ion-icon>
+                }
+                <h2>{{item.time}}</h2>  
+              </div>
+            </div>
+          </div>
+        }
+  
+      }
+    
+    }
+    <app-spinner [isLoading]="isLoading"></app-spinner>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+<!-- 
 <ion-header>
   <ion-toolbar>
-    <ion-button class="btn-logout" expand="block" (click)="logOut()"><ion-icon  name="arrow-back-circle-outline"></ion-icon></ion-button>
+    <h2 style="margin-left: 100px;" slot="start">{{auth.nameUser}}</h2>
+    <ion-button slot="end" class="btn-logout" expand="block" (click)="logOut()">
+       <h2 slot="end">Salir</h2> 
+      <ion-icon slot="start" name="arrow-back-circle-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
   
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
+  @if (!viewList) {
+    <div class="elements">
+      <ion-button class="element" (click)="switchView('linda')">
+        <img src="../../../../assets/image-home/cosas-lindas.png" alt="cosas lindas">
+        <h2 class="overlay-text">Cosas lindas</h2>
+      </ion-button>
+      <ion-button class="element" (click)="switchView('fea')">
+        <img src="../../../../assets/image-home/cosas-feas.png" alt="cosas feas">
+        <h2 class="overlay-text">Cosas feas</h2>
+      </ion-button>  
+    </div>
+  }
+  @else {
+      <ion-button class="btn-back" (click)="handleViewList()"><ion-icon name="arrow-undo-outline"></ion-icon></ion-button>
+
+      <div class="content-camera">
+        <ion-button class="btn-photo" (click)="saveImage()"><ion-icon name="camera-outline" class="icon-camera"></ion-icon></ion-button>
+      </div>
+  
+  
+      @for (item of this.photos; track $index) {
+        @if (item.type == currentType && item.user != this.auth.nameUser) {
+          <div class="elements-list">
+            <div class="element-list">
+              <h2 class="text-top">{{item.user}}</h2>
+              <img src={{item.image}} alt="image user" class="image-user" >
+              <div class="section-bottom"> 
+                <h2>{{item.day}}</h2>
+                @if (!this.verifyLike(item)) {
+                  <ion-icon name="heart-outline" class="icon-like" (click)="updateLike(item.id, true)"></ion-icon>
+                }@else{
+                  <ion-icon name="heart" class="icon-like" (click)="updateLike(item.id, false)"></ion-icon>
+                }
+                <h2>{{item.time}}</h2>  
+              </div>
+            </div>
+          </div>
+        }
+  
+      }
+    
+    }
+    <app-spinner [isLoading]="isLoading"></app-spinner>
 </ion-content>
+-->

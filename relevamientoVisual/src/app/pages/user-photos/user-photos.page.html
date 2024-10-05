@@ -1,0 +1,19 @@
+<ion-content id="main-content" [fullscreen]="true">
+  @for (item of this.photos; track $index) {
+    @if (item.user == this.auth.nameUser) {
+      <div class="elements-list">
+        <div class="element-list">
+          <h2 class="text-top">{{item.user}}</h2>
+          <img src={{item.image}} alt="image user" class="image-user" >
+          <div class="section-bottom"> 
+            <h2>{{item.day}}</h2>
+            <h2>{{item.time}}</h2>  
+          </div>
+        </div>
+      </div>
+    }
+
+  }
+  <app-spinner [isLoading]="isLoading"></app-spinner>
+
+</ion-content>

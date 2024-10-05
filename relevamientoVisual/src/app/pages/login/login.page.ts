@@ -52,7 +52,7 @@ export class Login {
         .then((username : string)=>{
           this.auth.nameUser = username;
           this.isLoading = false;
-
+          this.emptyInputs();
           this.toast.CreateTost('Has iniciado sesion','success','green');
           this.router.navigate(['/home']);
         })

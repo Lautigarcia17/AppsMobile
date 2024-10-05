@@ -18,4 +18,12 @@ export const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.routes').then((m) => m.routes),
   },
+  {
+    path: 'statistics',
+    loadComponent: () => import('./pages/statistics/statistics.page').then( m => m.StatisticsPage)
+  },
+  {
+    path: 'user-photos',
+    loadComponent: () => import('./pages/user-photos/user-photos.page').then( m => m.UserPhotosPage)
+  },
 ];

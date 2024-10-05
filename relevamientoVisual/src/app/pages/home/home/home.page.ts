@@ -1,12 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component} from '@angular/core';
-import { Router } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonIcon, IonButtons, IonRouterOutlet, IonButton, IonGrid, IonRow, IonCol, IonProgressBar } from '@ionic/angular/standalone';
+import { Component, OnInit} from '@angular/core';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonIcon, IonButtons, IonRouterOutlet, IonButton, IonGrid, IonRow, IonCol, IonProgressBar,IonMenu,IonMenuButton, IonList, IonItem, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { arrowBackCircleOutline } from 'ionicons/icons';
+import { arrowBackCircleOutline, heartOutline,heart,arrowUndoOutline,cameraOutline,homeOutline,statsChartOutline,imageOutline } from 'ionicons/icons';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 import Swal from 'sweetalert2';
+import {Camera, CameraResultType, CameraSource} from '@capacitor/camera'
+import { DatabaseService } from 'src/app/core/services/database.service';
+import { Photo } from 'src/app/core/models/photo';
+import { SpinnerComponent } from 'src/app/components/spinner/spinner.component';
 
 
 @Component({
@@ -14,42 +18,72 @@ import Swal from 'sweetalert2';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonProgressBar, IonCol, IonRow, IonGrid, IonButton, IonRouterOutlet, IonButtons, IonIcon, IonInput, IonHeader, IonToolbar, IonTitle, IonContent, CommonModule],
+  imports: [RouterModule,IonLabel, IonItem, IonList, SpinnerComponent,IonProgressBar, IonCol, IonRow, IonGrid, IonButton, IonRouterOutlet, IonButtons, IonIcon, IonInput, IonHeader, IonToolbar, IonTitle, IonContent, CommonModule,IonMenu,IonMenuButton],
 })
-export class HomePage {
+export class HomePage implements OnInit{
+  photos! : Photo[];
+  viewList!: boolean;
+  currentType!: string;
+  isLoading!: boolean;
 
+  constructor(public auth : AuthService, private toast : ToastService, private router : Router, private database : DatabaseService) {
+    addIcons({arrowBackCircleOutline,heartOutline,heart,arrowUndoOutline,cameraOutline,homeOutline,statsChartOutline,imageOutline});
+    this.viewList = false;
+    this.currentType = '';
+    this.auth.nameUser = 'anonimo';
 
-
-  constructor(private auth : AuthService, private toast : ToastService, private router : Router) {
-    addIcons({arrowBackCircleOutline});
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
    }
+
+
+  ngOnInit(): void {
+
+    Camera.requestPermissions();
+    // this.database.getPhotosDatabase().subscribe(response=>{
+    //   this.photos = response;
+    // })
+  }
  
- 
-   logOut()
-   {
-     Swal.fire({
-       title: "Estás seguro?",
-       text: "Volveras al  inicio y tendras que volver a iniciar sesión",
-       icon: "warning",
-       showCancelButton: true,
-       confirmButtonText: 'Si',
-       cancelButtonText: 'No',
-       confirmButtonColor: '#fdb32f',
-       cancelButtonColor: '#d94241',
-       heightAuto: false,
-       background: '#1e1e1e',  
-       color: '#ffffff',  
-     }).then((result) => {
-       if (result.isConfirmed) {
-         this.auth.logout()
-         .then( () =>{
-           this.auth.nameUser = '';
-           this.toast.CreateTost('Has cerrado sesión','success','green');
-           this.router.navigate(['login']);
-         })
-       }
- 
-     });
+
+   switchView(type:string){
+    this.viewList = true;
+    this.currentType = type;
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
    }
+
+
+   async saveImage(){
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+      source: CameraSource.Camera
+    });
+    const path = await this.database.uploadImage(image.base64String,this.currentType + '/'+ this.auth.nameUser + '-'+Date.now().toString());
+    this.database.savePhoto(this.auth.nameUser,path,this.currentType);
+    this.toast.CreateTost('Se guardó la imagen','success','green');
+   }
+
+
+   handleViewList(){
+    this.viewList= !this.viewList;
+   }
+
+
+   updateLike(id : string, like : boolean){
+    this.database.updateLikePhoto(id,this.auth.nameUser, like);
+   }
+
+   verifyLike(photo : Photo){
+    return photo.votes.some( (element )=> element == this.auth.nameUser);
+   }
+
+
 
 }
