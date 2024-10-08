@@ -32,8 +32,8 @@
     --padding-bottom: 0;
   }
   .active-link {
-    background-color: #3a3a3a; /* Color de fondo para la ruta activa */
-    color: #ffd700 !important;  /* Cambiar color del texto o íconos en la ruta activa */
+    background-color: #3a3a3a; 
+    color: #ffd700 !important; 
   }
 
   
@@ -45,4 +45,22 @@
     margin-top: 10px;
     position: fixed;
     z-index: 999;
+  }
+
+  
+  ion-menu{
+    --background: #1f1f1f !important;
+  }
+
+  ion-menu ion-content{
+    --background: #1f1f1f !important;
+  }
+  ion-list {
+    --background: #1f1f1f !important; 
+    padding: 0;
+  }
+  
+  ion-item {
+    --background: #1f1f1f !important;
+    color: white; 
   }

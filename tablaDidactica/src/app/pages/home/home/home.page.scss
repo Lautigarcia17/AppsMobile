@@ -14,9 +14,100 @@ ion-toolbar{
     color: #000000;
 }
 
-ion-title{
-    font-family: "Playfair Display", serif;
-    font-size: 25px;
-    font-weight: 900;
-    text-align: center;
+
+
+ion-icon{
+  color: rgb(0, 0, 0);
+}
+
+.content{
+  width: 100%;
+  height: 100%;
+}
+
+.elements{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+.card {
+  text-align: center;
+  --background: rgb(70 83 255);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid #000000
+}
+
+ion-button{
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+.card img{
+  width: 50%;
+  height: auto;
+}
+
+
+
+.fab-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  // border-radius: 20px;
+}
+
+ion-fab-button {
+  --background: rgb(255 187 85);
+}
+
+
+.language {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+
+@media (max-height: 450px) {
+  .elements{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card img{
+    width: 35%;
+  }
+
+  .fab-horizontal {
+    margin-right:180px;
+  }
+
+}
+
+.custom-swal-toast {
+  width: 90vw; /* Valor por defecto para dispositivos móviles */
+}
+
+@media (min-width: 768px) {
+  .custom-swal-toast {
+    width: 50vw; /* Ajuste para pantallas más anchas, como modo horizontal */
+  }
+}
+
+@media (min-width: 1024px) {
+  .custom-swal-toast {
+    width: 40vw; /* Ajuste adicional para tabletas o pantallas grandes */
+  }
 }

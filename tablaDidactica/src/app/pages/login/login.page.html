@@ -7,9 +7,6 @@
 
 <ion-content>
   <div class="login-content">
-
-
-
     <!-- Inputs -->
     <form [formGroup]="formUser" (ngSubmit)="login()">
       <div class="content-input">
@@ -26,8 +23,6 @@
         <div class="validation-message" [hidden]="formUser.get('email')?.pristine">Formato invalido del email</div>
         }
 
-
-
         <ion-item class="custom-input">
           <ion-icon class="input-icon" name="lock-closed-outline"></ion-icon>
           <ion-input style="--background: transparent; --border-color: transparent;" type="password" label="Contraseña"
@@ -43,24 +38,16 @@
         }
       </div>
 
-
       <h1 class="title">INICIAR SESIÓN</h1>
-
       <div class="app-icon">
         <img src="../../../assets/icon/icon.png" alt="App Icon">
       </div>
-
-
-
 
       <ion-button type="submit" class="login-button" [disabled]="formUser.invalid">
         Ingresar
       </ion-button>
     </form>
-
-
   </div>
-
 
   <ion-modal #modal trigger="open-modal">
     <ng-template>
@@ -123,14 +110,8 @@
         </ion-list>
       </ion-content>
     </ng-template>
-
-    
   </ion-modal>
-  
+
   <app-spinner [isLoading]="isLoading"></app-spinner>
-
-
-
-
 
 </ion-content>

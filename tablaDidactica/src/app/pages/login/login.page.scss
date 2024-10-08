@@ -28,9 +28,9 @@ ion-title{
 }
 
 ion-header ion-toolbar {
-  --background: #ffffff; 
-    --color: rgb(0, 0, 0); 
-    text-align: center;
+  --background: rgb(233 233 255 / 85%) !important;
+  --color: rgb(0, 0, 0);
+  text-align: center;
   }
 
 
@@ -173,9 +173,10 @@ ion-modal ion-toolbar {
 }
 
 .content-input{
-  background: white;
+  background: rgb(233 233 255 / 85%) !important;
   border-radius: 30px;
   padding: 0px 20px;
+  border: 2px solid black;
 }
 
 .user-item{
@@ -192,4 +193,49 @@ ion-img{
   object-fit: fill;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+
+
+// MQ
+
+@media (max-height: 400px) {
+  .title{
+    font-size: 15px;
+    margin: 5px;
+  }
+  .app-icon{
+    margin-top: 0;
+  }
+  .app-icon img{
+    width: 50px;
+    margin-bottom: 5px;
+  }
+  .login-button{
+    font-size: 20px;
+    min-height: 30px;
+    margin-top: 0;
+  }
+
+  // .content-input{
+  //   display: flex;
+  //   flex-direction: row;
+  //   align-items: center;
+  // }
+
+  .custom-input{
+    max-width: 250px;
+    margin-bottom: 2px;
+  }
+  .input-icon{
+    font-size: 15px; 
+  }
+  .validation-message{
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+  ::ng-deep ion-input-password-toggle ion-button {
+    margin: 0 !important;
+
+  }
 }

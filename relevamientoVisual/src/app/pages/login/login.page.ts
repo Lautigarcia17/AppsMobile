@@ -53,6 +53,7 @@ export class Login {
           this.auth.nameUser = username;
           this.isLoading = false;
           this.emptyInputs();
+          this.resetForm();
           this.toast.CreateTost('Has iniciado sesion','success','green');
           this.router.navigate(['/home']);
         })
@@ -73,6 +74,10 @@ export class Login {
       "email": '',
       "password": ''
     })
+  }
+
+  resetForm() {
+    this.formUser.reset(); 
   }
 
   completeUser(email:string, password:string){

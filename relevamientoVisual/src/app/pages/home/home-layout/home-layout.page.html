@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
    
-      <ion-buttons slot="start">
+      <ion-buttons style="color:  white;" slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       
@@ -17,24 +17,24 @@
   
   <ion-menu content-id="main-content">
     <ion-header>
-      <ion-toolbar color="light">
+      <ion-toolbar color="dark">
         <ion-title>Menú</ion-title>
       </ion-toolbar>
     </ion-header>
   
-    <ion-content >
-      <ion-list style="height: 100%; background-color: #1f1f1f;" >
-        <ion-item style="background-color: #1f1f1f;" routerLink="/home/" routerLinkActive="active-link" (click)="closeMenu()" [routerLinkActiveOptions]="{ exact: true }" >
+    <ion-content>
+      <ion-list>
+        <ion-item  routerLink="/home/" routerLinkActive="active-link" (click)="closeMenu()" [routerLinkActiveOptions]="{ exact: true }" >
           <ion-icon slot="start" name="home-outline"></ion-icon>
           <ion-label>Inicio</ion-label>
         </ion-item>
   
-        <ion-item style="background-color: #1f1f1f;" routerLink="statistics" routerLinkActive="active-link" (click)="closeMenu()"  [routerLinkActiveOptions]="{ exact: true }" >
+        <ion-item   routerLink="statistics" routerLinkActive="active-link" (click)="closeMenu()"  [routerLinkActiveOptions]="{ exact: true }" >
           <ion-icon slot="start" name="stats-chart-outline"></ion-icon>
           <ion-label>Estadísticas</ion-label>
         </ion-item>
   
-        <ion-item  style="background-color: #1f1f1f;" routerLink="user-photos" routerLinkActive="active-link" (click)="closeMenu()"  [routerLinkActiveOptions]="{ exact: true }" >
+        <ion-item routerLink="user-photos" routerLinkActive="active-link" (click)="closeMenu()"  [routerLinkActiveOptions]="{ exact: true }" >
           <ion-icon slot="start" name="image-outline"></ion-icon>
           <ion-label>Mis Fotos</ion-label>
         </ion-item>

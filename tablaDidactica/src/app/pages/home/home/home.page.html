@@ -1,13 +1,69 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title >TABLA</ion-title>
     <ion-button class="btn-logout" expand="block" (click)="logOut()"><ion-icon name="enter-outline"></ion-icon></ion-button>
-    
-
   </ion-toolbar>
   
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div class="elements">
+    @for (item of arrayOptions; track $index) {
+      <ion-button class="card" (click)="listenAudio(item.value)"> <img src={{item.image}} alt={{item.value}} > </ion-button>
+    }
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button>
+      <img src="../../../../assets/lenguajes/{{language}}.png" class="fab-image" alt="background">
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      @if (language != 'castellano') {
+        <ion-fab-button (click)="setLanguage('castellano')">
+          <img src="../../../../assets/lenguajes/castellano.png" alt="castellano" class="language">
+        </ion-fab-button>
+      }
+      @if (language != 'ingles') {
+        <ion-fab-button (click)="setLanguage('ingles')" >
+          <img src="../../../../assets/lenguajes/ingles.png" alt="ingles" class="language" >
+        </ion-fab-button>
+      }
+
+      @if (language != 'portugues') {
+        <ion-fab-button (click)="setLanguage('portugues')">
+          <img src="../../../../assets/lenguajes/portugues.png" alt="portugues" class="language">
+        </ion-fab-button>
+      }
+    </ion-fab-list>
+  </ion-fab>
+
+
+  <ion-fab slot="fixed" horizontal="center" vertical="top" class="fab-horizontal">
+    <ion-fab-button>
+      <img src="../../../../assets/temas/{{option}}.png" class="fab-image" alt="background">
+    </ion-fab-button>
+    @if (option != 'numeros') {
+      <ion-fab-list side="end">
+        <ion-fab-button (click)="setOptions('numeros')">
+          <img src="../../../../assets/temas/numeros.png" alt="numeros" class="language">
+        </ion-fab-button>
+      </ion-fab-list>
+    }
+    @if (option != 'animales') {
+      <ion-fab-list side="bottom">
+        <ion-fab-button (click)="setOptions('animales')">
+          <img src="../../../../assets/temas/animales.png" alt="animales" class="language">
+        </ion-fab-button>
+      </ion-fab-list>
+    }
+    @if (option != 'colores') {
+      <ion-fab-list side="start">
+        <ion-fab-button (click)="setOptions('colores')">
+          <img src="../../../../assets/temas/colores.png" alt="colores" class="language">
+        </ion-fab-button>
+      </ion-fab-list>
+    }
+  </ion-fab>
+
+
 
 </ion-content>

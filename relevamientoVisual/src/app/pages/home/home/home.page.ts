@@ -30,7 +30,7 @@ export class HomePage implements OnInit{
     addIcons({arrowBackCircleOutline,heartOutline,heart,arrowUndoOutline,cameraOutline,homeOutline,statsChartOutline,imageOutline});
     this.viewList = false;
     this.currentType = '';
-    this.auth.nameUser = 'anonimo';
+    // this.auth.nameUser = 'anonimo';
 
     this.isLoading = true;
     setTimeout(() => {
@@ -42,9 +42,9 @@ export class HomePage implements OnInit{
   ngOnInit(): void {
 
     Camera.requestPermissions();
-    // this.database.getPhotosDatabase().subscribe(response=>{
-    //   this.photos = response;
-    // })
+    this.database.getPhotosDatabase().subscribe(response=>{
+      this.photos = response;
+    })
   }
  
 

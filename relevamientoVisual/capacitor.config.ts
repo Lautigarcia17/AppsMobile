@@ -6,9 +6,7 @@ const config: CapacitorConfig = {
   webDir: 'www',
   plugins:{
     SplashScreen:{
-      launchShowDuration: 1000,
-      launchAutoHide: true,
-      launchFadeOutDuration: 1000,
+      launchAutoHide: false,
     }
   }
 };
