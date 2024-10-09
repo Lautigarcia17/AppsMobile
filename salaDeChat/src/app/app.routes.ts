@@ -16,6 +16,10 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.routes').then((m) => m.routes),
+    loadComponent: () => import('./pages/home/home.page').then((m) => m.HomePage),
+  },
+  {
+    path: 'chat/:section',
+    loadComponent: () => import('./pages/chat/chat.page').then( m => m.ChatPage)
   },
 ];

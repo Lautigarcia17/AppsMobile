@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule,Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonFabButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton, IonFab, IonIcon, IonFabList, IonButtons, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
-import { arrowBackCircleOutline, car } from 'ionicons/icons';
+import { arrowBackCircleOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { Card } from 'src/app/core/models/card';
 import Swal from 'sweetalert2';

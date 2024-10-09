@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
-  constructor(private router : Router) {
-    this.router.navigate(['splash']);
+  constructor(private router : Router, private auth : AuthService) {
+    this.router.navigate(['chat/PPS-4A']);
+    // this.router.navigate(['chat/PPS-4A']);
+    auth.nameUser = 'admin';
   }
 }

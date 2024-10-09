@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{section}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="icon" name="arrow-back-circle-outline" (click)="goBack()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content [fullscreen]="true" [ngClass]="{'first-div': section == 'PPS-4A', 'second-div' : section == 'PPS-4B'}">
+  <div class="chat-container">
+    <div class="chat-content">
+      <div class="content-main">
+        <ul class="chat-list mt-2">
+          @for (message of arrayMessages; track $index) {
+            @if (message.section === section) {
+              <li [ngClass]="{'out': message.username === auth.nameUser}">
+                <div class="day" *ngIf="validateSameDay(message.time ,$index)">
+                  <h3>{{ message.time | dayName}}</h3>
+                  <h5>{{ message.time | date: 'd/M/yy' }}</h5>
+                </div>
+                
+                <div class="chat-body">
+                  <div class="chat-message">
+                      @if (message.username != auth.nameUser) {
+                        <h5>{{message.username | titlecase}}</h5>
+                      }
+                      <p>{{message.message}}</p>
+                      <p class="time">{{message.time | date : 'HH:mm'}}</p>
+                  </div>
+                </div>
+              </li>
+            }
+          }
+        </ul>
+      </div>
+  
+      <div class="message-content-input">
+        <input  [(ngModel)]="message" type="text" class="form-control"  name="message" placeholder="Escribir un mensaje" />
+        <ion-button (click)="sendMessage()" [ngClass]="{'second-icon': section == 'PPS-4B'}"> <ion-icon name="send-outline"></ion-icon> </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

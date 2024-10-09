@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      SALAS
+    </ion-title>
+    <ion-button  class="btn-logout" expand="block" (click)="logOut()"><h1>Cerrar Sesión</h1> </ion-button>
+
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="elements">
+    <ion-button class="element first-button" (click)="goChat('PPS-4A')">
+       <h2>PPS-4A</h2> 
+    </ion-button>
+    <ion-button class="element second-button" (click)="goChat('PPS-4B')">
+      <h2>PPS-4B </h2>
+    </ion-button>  
+  </div>
+
+
+</ion-content>

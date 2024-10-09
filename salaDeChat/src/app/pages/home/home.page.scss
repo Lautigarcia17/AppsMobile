@@ -1,0 +1,67 @@
+.btn-logout
+{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    --background: black;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 0px;
+}
+.btn-logout h1{
+    font-size: 7px;
+    padding: 0px;
+    margin: 0px;
+    color: white;
+}
+
+
+
+
+ion-title{
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+}
+
+ion-toolbar{
+    --background: #1f1f1f !important;
+    --color: rgb(127 255 125);
+}
+
+
+
+// buttons
+
+.elements{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+  .element{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 1px solid black;
+  }
+
+  .first-button{
+    --background: #ebde49;
+    color: #21212b;
+  }
+
+  .second-button{
+    --background: rgb(127 255 125);
+    color: #21212b; 
+  }
+
+  .element h2{
+    font-size: 60px;
+    font-weight: 700;
+    font-family: "Bebas Neue", sans-serif;
+  }

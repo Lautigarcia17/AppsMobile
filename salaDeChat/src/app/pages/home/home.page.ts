@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component} from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonIcon, IonButtons, IonRouterOutlet, IonButton, IonGrid, IonRow, IonCol, IonProgressBar } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonProgressBar, IonCol, IonRow, IonGrid, IonButton, IonRouterOutlet, IonButtons, IonIcon, IonInput, IonHeader, IonToolbar, IonTitle, IonContent, CommonModule],
+  imports: [RouterModule,IonProgressBar, IonCol, IonRow, IonGrid, IonButton, IonRouterOutlet, IonButtons, IonIcon, IonInput, IonHeader, IonToolbar, IonTitle, IonContent, CommonModule],
 })
 export class HomePage {
 
@@ -47,6 +47,10 @@ export class HomePage {
       }
 
     });
+  }
+
+  goChat(section : string){
+    this.router.navigate(['chat',section]);
   }
 
 }
