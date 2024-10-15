@@ -21,6 +21,99 @@ ion-icon{
 }
 
 ion-toolbar{
-    --background: #ffffff !important;
+    --background: #ff3a3adb !important;
     color: #000000;
+    border-bottom: 4px solid black;
+}
+
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+
+button{
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    background: transparent;
+}
+
+.alarm{
+    --background: transparent;
+    padding: 0;
+    margin: 0;
+    --box-shadow: 0 0 0 !important;
+}
+
+
+
+
+// MODAL
+
+
+
+ion-modal#password-modal {
+    --width: fit-content;
+    --min-width: 280px;
+    --height: fit-content;
+    --border-radius: 8px;
+    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+    background: transparent;
+  
+    .password-modal-wrapper {
+        padding: 20px;
+        background: #1d1a1a;
+    }
+  
+    .password-label {
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+  
+    .password-input {
+        --background: transparent;
+        --padding-start: 10px;
+        border-radius: 4px;
+        --color: white;
+    }
+  
+    .password-submit{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    .password-submit-button {
+        --background: #60e736;
+        color: #000000;
+        font-weight: 700;
+        margin-top: 20px;
+        width: 60%;
+    }
+  }
+
+
+  ion-item , ion-list{
+    --background: #1e1e1e;
+    padding: 0;
+  }
+
+
+
+  //
+
+  @media (max-height: 450px) {
+    ion-img{
+        display: inline-flex;
+        width: 65%;
+    }
+
 }

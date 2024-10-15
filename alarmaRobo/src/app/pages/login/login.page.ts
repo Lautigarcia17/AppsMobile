@@ -51,6 +51,7 @@ export class Login {
         this.database.findUsernameDatabase(response.user.email ?? '')
         .then((username : string)=>{
           this.auth.nameUser = username;
+          this.auth.passwordUser = password;
           this.isLoading = false;
           this.emptyInputs();
           this.toast.CreateTost('Has iniciado sesion','success','green');

@@ -1,14 +1,50 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title >
-      ALARMA
-    </ion-title>
-    <ion-button class="btn-logout" expand="block" (click)="logOut()"><ion-icon name="exit-outline"></ion-icon></ion-button>
-
-  </ion-toolbar>
+@if (!isBlocked) {
+  <ion-header>
+    <ion-toolbar>
+      <ion-title >
+        ALARMA
+      </ion-title>
+      <ion-button class="btn-logout" expand="block" (click)="logOut()"><ion-icon name="exit-outline"></ion-icon></ion-button>
   
-</ion-header>
+    </ion-toolbar>
+    
+  </ion-header>
+}
+
 
 <ion-content [fullscreen]="true">
+  <div class="content">
+    @if (isBlocked) {
+      <button class="alarm" id="open-custom-dialog">
+        <ion-img src="../../../../assets/alarm/on.webp" alt="on"></ion-img>
+      </button>
+
+      <ion-modal id="password-modal" #modal trigger="open-custom-dialog" >
+        <ng-template>
+          <div class="password-modal-wrapper">
+            <ion-list lines="none">
+              <ion-item>
+                <ion-label class="password-label" position="floating">Ingrese la contraseña</ion-label>
+                <ion-input type="password" class="password-input" [(ngModel)]="password"></ion-input>
+              </ion-item>
+            </ion-list>
+            <div class="password-submit">
+              <ion-button expand="block" class="password-submit-button" (click)="deactivateAlarm()" >Enviar</ion-button>
+
+            </div>
+          </div>
+        </ng-template>
+      </ion-modal>
+
+    }@else{
+      <button class="alarm" (click)="switchAlarm()">
+        <ion-img src="../../../../assets/alarm/off.webp" alt="off"></ion-img>
+      </button>
+    }
+    
+  </div>
+
+
+
 
 </ion-content>

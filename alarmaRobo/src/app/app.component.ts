@@ -11,5 +11,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 export class AppComponent {
   constructor(private router : Router) {
     this.router.navigate(['splash']);
+    // this.router.navigate(['login']);
+    // this.router.navigate(['home']);
   }
 }

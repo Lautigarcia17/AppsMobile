@@ -11,8 +11,6 @@ import { AuthService } from './core/services/auth.service';
 })
 export class AppComponent {
   constructor(private router : Router, private auth : AuthService) {
-    this.router.navigate(['chat/PPS-4A']);
-    // this.router.navigate(['chat/PPS-4A']);
-    auth.nameUser = 'admin';
+    this.router.navigate(['splash']);
   }
 }

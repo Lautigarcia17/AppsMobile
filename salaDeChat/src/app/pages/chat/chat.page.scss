@@ -30,9 +30,8 @@ ion-title{
 
   .chat-content {
     width: 100%;
-    padding: 20px 0px;
     overflow-y: auto;
-    height: auto;
+    height: 88%;
   }
   
   .chat-list {
@@ -104,6 +103,7 @@ ion-title{
     line-height: 100%;
     font-size: 10px;
     text-align: start;
+    color: #12dddc;
   }
   
   .chat-message p {
@@ -135,14 +135,14 @@ ion-title{
     width: 85%;
     padding: 12px;
     border-radius: 8px;
-    border: 2px solid #17202b;
+    border: 1px solid #7fff7d ;
     font-size: 10px;
     background: #1f1f1f;
     color: white;
   }
   
   .message-content-input input:focus {
-    border-color: rgb(255, 255, 255);
+    border-color: #7fff7d ;
     outline: none; 
   }
 
@@ -156,3 +156,18 @@ ion-title{
   .second-icon{
     color: #7fff7d !important;
   }  
+
+
+  .text4a{
+    background-color: #ae2d2d !important;
+  }
+
+
+  .input4a{
+    border: 1px solid #ebde49  !important;
+  }
+
+  .input4a:focus{
+    border-color: #ebde49  ;
+    outline: none; 
+  }

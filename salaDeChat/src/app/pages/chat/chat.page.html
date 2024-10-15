@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true" [ngClass]="{'first-div': section == 'PPS-4A', 'second-div' : section == 'PPS-4B'}">
   <div class="chat-container">
     <div class="chat-content">
-      <div class="content-main">
+      <div class="content-main" >
         <ul class="chat-list mt-2">
           @for (message of arrayMessages; track $index) {
             @if (message.section === section) {
@@ -23,7 +23,7 @@
                 </div>
                 
                 <div class="chat-body">
-                  <div class="chat-message">
+                  <div class="chat-message" [ngClass]="{'text4a': section == 'PPS-4B' && message.username == auth.nameUser}">
                       @if (message.username != auth.nameUser) {
                         <h5>{{message.username | titlecase}}</h5>
                       }
@@ -35,10 +35,11 @@
             }
           }
         </ul>
+        <div #scrollAnchor></div>
       </div>
   
       <div class="message-content-input">
-        <input  [(ngModel)]="message" type="text" class="form-control"  name="message" placeholder="Escribir un mensaje" />
+        <input maxlength="21"  [(ngModel)]="message" type="text" class="form-control"  name="message" placeholder="Escribir un mensaje" [ngClass]="{'input4a': section == 'PPS-4A'}"/>
         <ion-button (click)="sendMessage()" [ngClass]="{'second-icon': section == 'PPS-4B'}"> <ion-icon name="send-outline"></ion-icon> </ion-button>
       </div>
     </div>

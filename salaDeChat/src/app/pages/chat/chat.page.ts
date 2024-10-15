@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonButton } from '@ionic/angular/standalone';
@@ -17,11 +17,12 @@ import { DatabaseService } from 'src/app/core/services/database.service';
   standalone: true,
   imports: [DayNamePipe,IonButton, IonIcon, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class ChatPage implements OnInit {
+export class ChatPage implements OnInit, AfterViewInit {
+  @ViewChild('scrollAnchor', { static: false }) private scrollAnchor!: ElementRef;
   section: string;
   arrayMessages!: Message[];
   message! : string;
-  lastDay! : string;
+
 
   constructor(private location : Location, private route : ActivatedRoute, public auth : AuthService, private database : DatabaseService) { 
     addIcons({arrowBackCircleOutline,sendOutline});
@@ -41,9 +42,24 @@ export class ChatPage implements OnInit {
       this.arrayMessages = [];
       for(let message of response)
       {
-        this.arrayMessages.push(message);
+        if(message.section == this.section){
+          this.arrayMessages.push(message);
+        }
       }
+      this.scrollToBottom();
     })
+  }
+
+  ngAfterViewInit() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(){
+    setTimeout(() => {
+      if (this.scrollAnchor) {
+        this.scrollAnchor.nativeElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   }
 
 

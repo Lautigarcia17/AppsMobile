@@ -8,6 +8,7 @@ import { from, Observable } from 'rxjs';
 })
 export class AuthService {
   nameUser : string = '';
+  passwordUser : string = '';
 
   constructor(private auth: Auth) { }
 
