@@ -49,7 +49,7 @@ export class Login {
         .then((username : string)=>{
           this.isLoading = false;
           this.auth.nameUser = username;
-          this.toast.CreateTost('Has iniciado sesion','success','green');
+          this.toast.CreateTost('Has iniciado sesión','success','green');
           this.router.navigate(['/home']);
           this.emptyInputs();
         })

@@ -24,7 +24,7 @@ export class SplashPage{
         setTimeout(() => 
         {
           this.router.navigateByUrl('login',{replaceUrl: true});
-        }, 4000);
+        }, 3500);
 
       });
 

@@ -1,23 +1,34 @@
-
 <ion-content id="main-content" [fullscreen]="true">
 
-  <div class="content">
-    <div class="graph" >
-      <div class="title" >
-        <h2>Gráfico Cosas Lindas</h2>
-      </div>
-      <div class="torta" id="GraficoLindas" style="width: 350px; height: 550px; "></div>
-    </div>
-  </div>
 
-  <div class="content">
-    <div class="graph">
-      <div class="title">
-        <h2>Gráfico Cosas Feas</h2>
+  @if (viewCosasLindas) {
+    <div class="content">
+      <div class="graph">
+        <div class="title">
+          <h2>Gráfico Cosas Lindas</h2>
+        </div>
+        <div class="torta" id="GraficoLindas" style="width: 350px; height: 550px;"></div>
       </div>
-    <div id="GraficoFeas" style="width: 300px; height: 550px; "></div>
-  </div>
-  </div>
+      <ion-button fill="outline" size="default" (click)="switchView()"> Ver cosas feas</ion-button>
+    </div>
+    
+  }
+  @else {
+    <div class="content" [hidden]="viewCosasLindas">
+      <div class="graph">
+        <div class="title">
+          <h2>Gráfico Cosas Feas</h2>
+        </div>
+        <div id="GraficoFeas" style="width: 300px; height: 550px;"></div>
+      </div>
+      <ion-button fill="outline" size="default" (click)="switchView()"> Ver cosas lindas</ion-button>
+    </div>
+  }
+
+
+
+
+
 
   <app-spinner [isLoading]="isLoading"></app-spinner>
 

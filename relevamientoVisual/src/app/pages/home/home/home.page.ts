@@ -30,7 +30,7 @@ export class HomePage implements OnInit{
     addIcons({arrowBackCircleOutline,heartOutline,heart,arrowUndoOutline,cameraOutline,homeOutline,statsChartOutline,imageOutline});
     this.viewList = false;
     this.currentType = '';
-    // this.auth.nameUser = 'anonimo';
+
 
     this.isLoading = true;
     setTimeout(() => {

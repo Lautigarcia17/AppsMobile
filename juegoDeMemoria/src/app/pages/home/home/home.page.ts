@@ -101,7 +101,7 @@ export class HomePage implements OnInit, OnDestroy {
   logOut() {
     Swal.fire({
       title: "Estás  seguro?",
-      text: "Volveras al  inicio y tendras que volver a iniciar sesión",
+      text: "Volverás al inicio y tendrás que volver a iniciar sesión",
       icon: "warning",
       showCancelButton: true,
       allowOutsideClick: false,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
 import * as echarts from 'echarts';
 import Swal from 'sweetalert2';
 import { Photo } from 'src/app/core/models/photo';
@@ -15,26 +15,26 @@ type EChartsOption = echarts.EChartsOption;
   templateUrl: './statistics.page.html',
   styleUrls: ['./statistics.page.scss'],
   standalone: true,
-  imports: [SpinnerComponent,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonButton, SpinnerComponent,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class StatisticsPage implements OnInit {
   photos!: Photo[];
   isLoading!: boolean;
-
-  constructor(private database : DatabaseService) {
-    this.isLoading = false;
-   }
+  viewCosasLindas!: boolean;
+  constructor(private database : DatabaseService) { 
+    this.viewCosasLindas = true;
+  }
 
   ngOnInit() {
     this.isLoading = true;
     this.database.getPhotosDatabase().subscribe(response=>{
         this.photos = response;
-        console.log(this.photos)
-        this.generateGraphLindas();
-        this.generateGraphFeas();
         setTimeout(() => {
           this.isLoading = false;
         }, 2000);
+        
+        this.generateGraphLindas();
+        this.generateGraphFeas();
     })
   }
 
@@ -196,6 +196,17 @@ export class StatisticsPage implements OnInit {
   }
 
 
+  switchView() {
+    this.viewCosasLindas = !this.viewCosasLindas;
+
+    setTimeout(() => {
+      if (this.viewCosasLindas) {
+        this.generateGraphLindas(); 
+      } else {
+        this.generateGraphFeas();
+      }
+    }, 0); 
+  }
 
 
   
